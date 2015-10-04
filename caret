@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 # open file using the Caret Text Editor (Chrome Packaged App)
-#/Users/mlin/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app-id=fljalecfjciodhpcledpamjachpmelml $@
-google-chrome --app-id=fljalecfjciodhpcledpamjachpmelml $@
+
+case "$OSTYPE" in
+  solaris*) echo "SOLARIS NOT Supported" ;;
+  darwin*)  "/Users/mlin/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app-id=fljalecfjciodhpcledpamjachpmelml $@" ;;
+  linux*)   google-chrome --app-id=fljalecfjciodhpcledpamjachpmelml $@ ;;
+  bsd*)     echo "BSD NOT Supported" ;;
+  *)        echo "unknown: $OSTYPE" ;;
+esac
+
+
